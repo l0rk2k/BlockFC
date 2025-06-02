@@ -1,0 +1,191 @@
+body {
+  font-family: Helvetica, 'Roboto', Arial, sans-serif; /* Fuente principal de ForoCoches */
+  background-color: #ffffff; /* Color de fondo general de secciones en FC (modo claro) */
+  color: #000000; /* Color de texto principal (modo claro) */
+  margin: 0;
+  padding: 15px;
+  width: 300px; /* Un ancho razonable para el popup */
+  box-sizing: border-box;
+}
+
+.popup-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* Espacio entre elementos */
+}
+
+h1 {
+  font-size: 1.1em; /* Tamaño similar a los títulos de sección en FC */
+  color: #000000;
+  text-align: center;
+  margin: 0 0 5px 0; /* Reducimos un poco el margen inferior */
+  font-weight: bold;
+}
+
+/* NUEVOS ESTILOS */
+.button-group-toggle {
+  margin-bottom: 10px; /* Espacio debajo del botón de toggle */
+  display: flex; 
+}
+
+#toggleBlockingButton {
+  width: 100%; /* Para que ocupe todo el ancho disponible */
+  /* Hereda estilos de .btn. Se añadirán estilos específicos de estado abajo */
+}
+
+/* Estado cuando el bloqueo está ACTIVO */
+#toggleBlockingButton.blocking-active {
+  background-color: #e63f2e; /* --button-hover-color (Rojo ForoCoches para indicar "activo/peligro") */
+  color: #ffffff; /* --text-color-clear */
+  border-color: #AA2A1B; /* --link-hover (un rojo más oscuro para el borde) */
+}
+
+#toggleBlockingButton.blocking-active:hover {
+  background-color: #AA2A1B; /* --link-hover */
+  border-color: #8B2215; /* Un rojo aún más oscuro */
+}
+
+/* Estado cuando el bloqueo está INACTIVO */
+#toggleBlockingButton.blocking-inactive {
+  background-color: #4CAF50; /* Un verde para indicar "seguro/inactivo el bloqueo" */
+  color: white;
+  border-color: #388E3C;
+}
+
+#toggleBlockingButton.blocking-inactive:hover {
+  background-color: #45a049;
+  border-color: #337a36;
+}
+
+.separator-line {
+  border: none;
+  height: 1px;
+  background-color: #e0e0e0; /* Un gris claro para el separador */
+  margin-top: 5px;       /* Espacio encima de la línea */
+  margin-bottom: 15px;   /* Espacio debajo de la línea */
+}
+/* FIN NUEVOS ESTILOS */
+
+textarea#userList {
+  width: 100%;
+  min-height: 120px; /* Reducido un poco para el nuevo botón, ajustar si es necesario */
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #CCCCCC; /* --border-gray-color */
+  border-radius: 4px;
+  font-family: Helvetica, 'Roboto', Arial, sans-serif;
+  font-size: 0.875rem;
+  background-color: #ffffff; /* Fondo blanco para el textarea */
+  color: #000000; /* Texto negro */
+  resize: vertical;
+}
+
+textarea#userList::placeholder {
+  color: #A4A4A4; /* --gray-text o --placeholder-gray-color */
+}
+
+.button-group {
+  display: flex;
+  gap: 10px; /* Espacio entre botones si hay varios en el mismo grupo */
+  justify-content: space-between;
+}
+
+.btn {
+  flex-grow: 1;
+  padding: 10px 15px;
+  font-family: Helvetica, 'Roboto', Arial, sans-serif;
+  font-size: 0.75rem; /* Tamaño de fuente de botones en FC */
+  font-weight: bold;
+  text-transform: uppercase; /* Botones en FC suelen ser mayúsculas */
+  border-radius: 20px; /* Un redondeo similar a .rounded-button pero puede ajustarse */
+  cursor: pointer;
+  text-align: center;
+  border: 1px solid transparent;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-primary {
+  background-color: #FD5D4D; /* --coral */
+  color: #ffffff; /* --text-color-clear */
+  border-color: #FD5D4D; /* --coral */
+}
+
+.btn-primary:hover {
+  background-color: #e63f2e; /* --button-hover-color */
+  border-color: #e63f2e; /* --button-hover-color */
+}
+
+.btn-secondary {
+  background-color: #F2F2F2; /* --header-menu-search-background (un gris claro neutro) */
+  color: #333333; /* --text-color-always-dark */
+  border: 1px solid #CCCCCC; /* --border-gray-color */
+}
+
+.btn-secondary:hover {
+  background-color: #e0e0e0; /* Un poco más oscuro al pasar el ratón */
+  border-color: #b0b0b0;
+}
+
+/* Estilos para el botón de importar archivo (label) */
+.btn-file {
+  /* Hereda estilos de .btn y .btn-secondary si se aplican ambas clases */
+}
+
+/* El input de archivo real se oculta en el HTML con style="display: none;" */
+
+/* --- ESTILOS PARA MODO OSCURO --- */
+body.popup-dark-mode {
+  background-color: #2a2a2a; /* --section-background-color en dark_theme */
+  color: #ffffff; /* --text-color en dark_theme */
+}
+
+body.popup-dark-mode h1 {
+  color: #ffffff; /* --text-color en dark_theme */
+}
+
+/* NUEVOS ESTILOS MODO OSCURO */
+body.popup-dark-mode #toggleBlockingButton.blocking-active {
+  background-color: #FD5D4D; /* Coral de FC, ya que "activo" significa que está bloqueando */
+  color: #ffffff;
+  border-color: #e63f2e; 
+}
+body.popup-dark-mode #toggleBlockingButton.blocking-active:hover {
+  background-color: #e63f2e;
+  border-color: #AA2A1B;
+}
+
+body.popup-dark-mode #toggleBlockingButton.blocking-inactive {
+  background-color: #3D4450; /* Un gris azulado oscuro para inactivo en modo oscuro */
+  color: #e0e0e0; /* Texto un poco más claro */
+  border-color: #555F6E;
+}
+body.popup-dark-mode #toggleBlockingButton.blocking-inactive:hover {
+  background-color: #4A5462;
+  border-color: #636F7E;
+}
+
+body.popup-dark-mode .separator-line {
+  background-color: #424242; /* --separator-color en dark_theme */
+}
+/* FIN NUEVOS ESTILOS MODO OSCURO */
+
+body.popup-dark-mode textarea#userList {
+  background-color: #000000; /* --header-menu-search-background o --background-color en dark_theme */
+  color: #ffffff; /* --text-color en dark_theme */
+  border: 1px solid #424242; /* --separator-color en dark_theme, un borde más oscuro */
+}
+
+body.popup-dark-mode textarea#userList::placeholder {
+  color: #a4a4a4; /* --gray-text en dark_theme */
+}
+
+body.popup-dark-mode .btn-secondary {
+  background-color: #333333; /* Un gris oscuro, similar a --menu-background-color */
+  color: #ffffff; /* --text-color en dark_theme */
+  border: 1px solid #5d5d5d; /* --forum-title-background o un gris intermedio */
+}
+
+body.popup-dark-mode .btn-secondary:hover {
+  background-color: #424242; /* Un poco más claro al pasar el ratón */
+  border-color: #6e6e6e;
+}

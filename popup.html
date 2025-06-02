@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Bloqueador ForoCoches</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <h1>Usuarios Ignorados</h1>
+
+    <div class="button-group button-group-toggle">
+      <button id="toggleBlockingButton" class="btn">Cargando...</button>
+    </div>
+
+
+    <textarea id="userList" rows="8" placeholder="Añade un nombre de usuario por línea o separados por coma"></textarea>
+
+    <div class="button-group">
+      <button id="saveButton" class="btn btn-primary">Guardar Lista</button>
+    </div>
+
+    <div class="button-group">
+      <button id="exportButton" class="btn btn-secondary">Exportar</button>
+      <label for="importFile" class="btn btn-secondary btn-file">
+        Importar
+        <input type="file" id="importFile" accept=".json" style="display: none;">
+      </label>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
